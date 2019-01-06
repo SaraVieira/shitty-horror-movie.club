@@ -16,20 +16,7 @@ const Abstract = ({ title }) => {
   useEffect(() => {
     fetch(`https://api.duckduckgo.com/?q=${title}&format=json&no_html=1`)
       .then(d => d.json())
-      .then(data => {
-        if (!data.AbstractText) {
-          setTimeout(
-            () =>
-              fetch(
-                `https://api.duckduckgo.com/?q=${title} movie&format=json&no_html=1`
-              )
-                .then(d => d.json())
-                .then(data => setAbstract(data.AbstractText)),
-            1000
-          )
-        }
-        setAbstract(data.AbstractText)
-      })
+      .then(data => setAbstract(data.AbstractText))
   }, [])
 
   return abstract ? (

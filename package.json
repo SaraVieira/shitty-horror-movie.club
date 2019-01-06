@@ -21,7 +21,7 @@
     "gatsby-plugin-transition-link": "^1.4.2",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-filesystem": "^2.0.8",
-    "gatsby-source-tmdb": "^1.0.0",
+    "gatsby-source-tmdb": "^1.0.1",
     "gatsby-transformer-sharp": "^2.1.9",
     "gsap": "^2.0.2",
     "react": "^16.7.0-alpha.2",
