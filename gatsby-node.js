@@ -19,7 +19,6 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             title
             imdb_id
-            backdrop_path
           }
         }
       }

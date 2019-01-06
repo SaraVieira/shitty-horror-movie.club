@@ -21,6 +21,7 @@ module.exports = {
           }
         },
         backdrop: true,
+        poster: true
       }
     },
     `gatsby-plugin-accessibilityjs`,

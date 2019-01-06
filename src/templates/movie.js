@@ -11,16 +11,19 @@ import RandomMovieButton from '../components/randomMovieButton'
 import IMDB from '../images/imdb.svg'
 import open from '../images/open.svg'
 
-const imageURL = `https://image.tmdb.org/t/p/original/`
-
 const Background = styled.section`
   position: absolute;
   z-index: -2;
   width: 100vw;
   height: 100vh;
-  background-image: url(${imageURL}/${props => props.bg});
-  background-size: cover;
-  background-position: center center;
+
+  > div.gatsby-image-wrapper {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    max-height: 100vh;
+  }
 
   &:after {
     content: '';
@@ -89,7 +92,10 @@ const Movie = ({ data: { tmdbAccountFavoriteMovies: movie } }) => {
       <RandomMovie>
         <RandomMovieButton text={'Next Movie'} />
       </RandomMovie>
-      <Background bg={movie.backdrop_path}>
+      <Background>
+        {movie.backdrop_path && (
+          <Img fluid={movie.backdrop_path.childImageSharp.fluid} />
+        )}
         <Container>
           <Main>
             <Header>
@@ -149,7 +155,13 @@ export const query = graphql`
       accountFavoriteMoviesId
       title
       id
-      backdrop_path
+      backdrop_path {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
       budget
       homepage
       budget
