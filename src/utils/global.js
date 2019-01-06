@@ -7,10 +7,10 @@ export default css`
   ${typography}
 
 body {
-    font-family: 'Avenir Next', 'Roboto', sans-serif;
-    background: #fff;
+    font-family: 'Karma', 'Avenir Next', sans-serif;
+    background: #26262a;
     line-height: 1.33;
-    color: #313131;
+    color: #fafaff;
     overflow-x: hidden;
 
     * {
@@ -20,14 +20,33 @@ body {
     }
   }
 
+  h1 {
+    font-family: 'Cabin';
+    font-weight: 500;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Oswald';
+    font-weight: 500;
+  }
+
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    font-weight: 700;
     padding-bottom: 20px;
+  }
+
+  small {
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding-top: 10px;
   }
 
   .video-container {

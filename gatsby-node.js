@@ -1,29 +1,43 @@
-// const _ = require(`lodash`)
-// const path = require(`path`)
-// const slash = require(`slash`)
+const _ = require(`lodash`)
+const path = require(`path`)
+const slash = require(`slash`)
 
-// exports.createPages = async ({ graphql, actions }) => {
-//   const { createPage } = actions
-//   const result = await graphql(`
-//     query {
-//     }
-//   `)
+var urlify = require('urlify').create({
+  addEToUmlauts: true,
+  szToSs: true,
+  spaces: '-',
+  nonPrintable: '-',
+  trim: true
+})
 
-//   if (result.errors) {
-//     throw result.errors
-//   }
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+  const result = await graphql(`
+    query {
+      allTmdbAccountFavoriteMovies {
+        edges {
+          node {
+            title
+            imdb_id
+          }
+        }
+      }
+    }
+  `)
 
-//   const template = path.resolve(`./src/templates/template.js`)
+  if (result.errors) {
+    throw result.errors
+  }
 
-//   _.each(result.data.allContentfulCaseStudy.edges, edge => {
-//     if (edge.node.slug) {
-//       createPage({
-//         path: `/pages/${edge.node.slug}/`,
-//         component: slash(template),
-//         context: {
-//           id: edge.node.id
-//         }
-//       })
-//     }
-//   })
-// }
+  const template = path.resolve(`./src/templates/movie.js`)
+
+  _.each(result.data.allTmdbAccountFavoriteMovies.edges, edge => {
+    createPage({
+      path: `/pages/${urlify(edge.node.title.toLowerCase())}/`,
+      component: slash(template),
+      context: {
+        id: edge.node.imdb_id
+      }
+    })
+  })
+}
