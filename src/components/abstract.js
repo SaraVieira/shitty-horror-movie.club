@@ -18,11 +18,15 @@ const Abstract = ({ title }) => {
       .then(d => d.json())
       .then(data => {
         if (!data.AbstractText) {
-          fetch(
-            `https://api.duckduckgo.com/?q=${title} movie&format=json&no_html=1`
+          setTimeout(
+            () =>
+              fetch(
+                `https://api.duckduckgo.com/?q=${title} movie&format=json&no_html=1`
+              )
+                .then(d => d.json())
+                .then(data => setAbstract(data.AbstractText)),
+            1000
           )
-            .then(d => d.json())
-            .then(data => setAbstract(data.AbstractText))
         }
         setAbstract(data.AbstractText)
       })

@@ -13,7 +13,7 @@ const Tags = ({ title, description }) => (
       name="image"
       content="https://rawcdn.githack.com/SaraVieira/shitty-horror-movie.club/31b1016d733256b5071db6588a077b0f3f79b92a/src/images/favicon.png"
     />
-    <meta itemProp="name" content="App" />
+    <meta itemProp="name" content="Shitty Horror Movie Club" />
     <meta
       itemProp="description"
       content="All the terrible horror movies you can handle"
@@ -23,7 +23,7 @@ const Tags = ({ title, description }) => (
       content="https://rawcdn.githack.com/SaraVieira/shitty-horror-movie.club/31b1016d733256b5071db6588a077b0f3f79b92a/src/images/favicon.png"
     />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="App" />
+    <meta name="twitter:title" content="Shitty Horror Movie Club" />
     <meta
       name="twitter:description"
       content="All the terrible horror movies you can handle"
@@ -34,7 +34,7 @@ const Tags = ({ title, description }) => (
       name="twitter:image:src"
       content="https://rawcdn.githack.com/SaraVieira/shitty-horror-movie.club/31b1016d733256b5071db6588a077b0f3f79b92a/src/images/favicon.png"
     />
-    <meta name="og:title" content="App" />
+    <meta name="og:title" content="Shitty Horror Movie Club" />
     <meta
       name="og:description"
       content="All the terrible horror movies you can handle"
@@ -44,7 +44,7 @@ const Tags = ({ title, description }) => (
       content="https://rawcdn.githack.com/SaraVieira/shitty-horror-movie.club/31b1016d733256b5071db6588a077b0f3f79b92a/src/images/favicon.png"
     />
     <meta name="og:url" content="https://example.com" />
-    <meta name="og:site_name" content="App" />
+    <meta name="og:site_name" content="Shitty Horror Movie Club" />
     <meta name="og:type" content="website" />
   </Helmet>
 )
