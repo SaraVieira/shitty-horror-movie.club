@@ -1,10 +1,12 @@
 import { css } from '@emotion/core'
 import typography from './css/type.js'
 import reset from './css/reset.js'
+import animate from 'animate.css'
 
 export default css`
   ${reset}
   ${typography}
+  ${animate}
 
 body {
     font-family: 'Karma', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,

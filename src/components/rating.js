@@ -33,6 +33,7 @@ const CircleContainer = styled.div`
     stroke-dashoffset: 339.292;
     animation: ${props => progress(1 - props.votes)} 2s;
     animation-fill-mode: forwards;
+    animation-delay: 1s;
   }
 `
 
@@ -40,7 +41,7 @@ const Circle = ({ votes }) => {
   const color = votes > 0.5 ? '#4AB83E' : '#D83838'
 
   return (
-    <CircleContainer votes={votes}>
+    <CircleContainer className="animated jackInTheBox delay-1s" votes={votes}>
       <p>{votes * 10} / 10</p>
       <svg className="progress" width="120" height="120" viewBox="0 0 120 120">
         <circle

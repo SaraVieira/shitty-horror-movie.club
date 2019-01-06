@@ -5,6 +5,7 @@
     "@emotion/core": "^10.0.4",
     "@emotion/styled": "^10.0.4",
     "add": "^2.0.6",
+    "animate.css": "^3.7.0",
     "emotion": "^10.0.4",
     "emotion-server": "^10.0.4",
     "gatsby": "^2.0.53",

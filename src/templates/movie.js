@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import Layout from '../components/layout'
 import Rating from '../components/rating'
 import Img from 'gatsby-image'
+import Trailers from '../components/trailers'
+import Abstract from '../components/abstract'
+import RandomMovieButton from '../components/randomMovieButton'
 
 import IMDB from '../images/imdb.svg'
 import open from '../images/open.svg'
@@ -69,32 +72,23 @@ const Links = styled.div`
   margin-bottom: 40px;
 `
 
-const Abstract = styled.section`
-  margin-top: 20px;
-`
-
 const Flex = styled.div`
   display: flex;
   justify-content: space-between;
 `
 
-const Small = styled.small`
-  font-weight: bold;
-  padding-top: 10px;
-  display: block;
+const RandomMovie = styled.div`
+  position: absolute;
+  top: 40px;
+  right: 40px;
 `
 
 const Movie = ({ data: { tmdbAccountFavoriteMovies: movie } }) => {
-  const [abstract, setAbstract] = useState(null)
-
-  useEffect(() => {
-    const title = movie.title
-    fetch(`https://api.duckduckgo.com/?q=${title}&format=json&no_html=1`)
-      .then(d => d.json())
-      .then(data => setAbstract(data.AbstractText))
-  }, [])
   return (
     <Layout>
+      <RandomMovie>
+        <RandomMovieButton text={'Next Movie'} />
+      </RandomMovie>
       <Background bg={movie.backdrop_path}>
         <Container>
           <Main>
@@ -106,9 +100,9 @@ const Movie = ({ data: { tmdbAccountFavoriteMovies: movie } }) => {
               >
                 <Flex>
                   <div>
-                    <h1>{movie.title}</h1>
-                    <h2> {movie.tagline}</h2>
-                    <Links>
+                    <h1 className="animated fadeInUp">{movie.title}</h1>
+                    <h2 className="animated fadeInUp"> {movie.tagline}</h2>
+                    <Links className="animated fadeInUp">
                       {' '}
                       {movie.homepage ? (
                         <a
@@ -134,25 +128,14 @@ const Movie = ({ data: { tmdbAccountFavoriteMovies: movie } }) => {
                   </div>
                   <Rating votes={movie.vote_average / 10} />
                 </Flex>
-                {abstract ? (
-                  <Abstract>
-                    <h3>Abstract:</h3>
-                    <p>{abstract}</p>
-                    <Small>
-                      Search by{' '}
-                      <a
-                        href="https://duckduckgo.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        DuckDuckGo
-                      </a>
-                    </Small>
-                  </Abstract>
-                ) : null}
+                <Abstract title={movie.title} />
               </div>
-              <Poster fixed={movie.poster_path.childImageSharp.fixed} />
+              <Poster
+                className="animated fadeIn"
+                fixed={movie.poster_path.childImageSharp.fixed}
+              />
             </Header>
+            <Trailers id={movie.accountFavoriteMoviesId} />
           </Main>
         </Container>
       </Background>
