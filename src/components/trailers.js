@@ -9,9 +9,7 @@ const Trailers = ({ id }) => {
   const [trailer, setTrailer] = useState(null)
 
   useEffect(() => {
-    const url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${
-      process.env.API_KEY
-    }&language=en-US`
+    const url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=7feb83087acd0bcec36d1798ef6b8771&language=en-US`
 
     fetch(url)
       .then(d => d.json())
