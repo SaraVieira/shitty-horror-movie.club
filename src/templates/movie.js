@@ -65,6 +65,7 @@ const Links = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 24px);
   grid-gap: 20px;
+  margin-bottom: 40px;
 `
 
 const Abstract = styled.section`
@@ -74,7 +75,12 @@ const Abstract = styled.section`
 const Flex = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-right: 40px;
+`
+
+const Small = styled.small`
+  font-weight: bold;
+  padding-top: 10px;
+  display: block;
 `
 
 const Movie = ({ data: { tmdbAccountFavoriteMovies: movie } }) => {
@@ -92,7 +98,11 @@ const Movie = ({ data: { tmdbAccountFavoriteMovies: movie } }) => {
         <Container>
           <Main>
             <Header>
-              <div>
+              <div
+                style={{
+                  paddingRight: 40
+                }}
+              >
                 <Flex>
                   <div>
                     <h1>{movie.title}</h1>
@@ -127,7 +137,7 @@ const Movie = ({ data: { tmdbAccountFavoriteMovies: movie } }) => {
                   <Abstract>
                     <h3>Abstract:</h3>
                     <p>{abstract}</p>
-                    <small>
+                    <Small>
                       Search by{' '}
                       <a
                         href="https://duckduckgo.com"
@@ -136,7 +146,7 @@ const Movie = ({ data: { tmdbAccountFavoriteMovies: movie } }) => {
                       >
                         DuckDuckGo
                       </a>
-                    </small>
+                    </Small>
                   </Abstract>
                 ) : null}
               </div>

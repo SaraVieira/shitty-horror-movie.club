@@ -53,7 +53,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Cabin:500i', 'Oswald:500', 'Karma']
+          families: ['Cabin:500i', 'Oswald:300', 'Karma']
         }
       }
     },

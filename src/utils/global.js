@@ -7,8 +7,9 @@ export default css`
   ${typography}
 
 body {
-    font-family: 'Karma', 'Avenir Next', sans-serif;
-    background: #26262a;
+    font-family: 'Karma', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: #151515;
     line-height: 1.33;
     color: #fafaff;
     overflow-x: hidden;
@@ -21,7 +22,8 @@ body {
   }
 
   h1 {
-    font-family: 'Cabin';
+    font-family: 'Cabin', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 500;
   }
 
@@ -30,8 +32,9 @@ body {
   h4,
   h5,
   h6 {
-    font-family: 'Oswald';
-    font-weight: 500;
+    font-family: 'Oswald', 'Helvetica', sans-serif;
+    font-weight: 300;
+    color: #cfcfcf;
   }
 
   h1,
@@ -45,8 +48,6 @@ body {
 
   small {
     font-size: 0.8rem;
-    font-weight: bold;
-    padding-top: 10px;
   }
 
   .video-container {
