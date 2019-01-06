@@ -19,7 +19,8 @@ module.exports = {
               movies: ['accountFavoriteMovies']
             }
           }
-        }
+        },
+        backdrop: true,
       }
     },
     `gatsby-plugin-accessibilityjs`,
