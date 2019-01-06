@@ -33,7 +33,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   _.each(result.data.allTmdbAccountFavoriteMovies.edges, edge => {
     createPage({
-      path: `/pages/${urlify(edge.node.title.toLowerCase())}/`,
+      path: `/movies/${urlify(edge.node.title.toLowerCase())}/`,
       component: slash(template),
       context: {
         id: edge.node.imdb_id
