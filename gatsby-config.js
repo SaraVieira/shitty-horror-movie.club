@@ -2,7 +2,8 @@ require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    title: 'App'
+    title: 'Shitty Horror Movie Club',
+    description: 'All the terrible horror movies you can handle'
   },
   plugins: [
     {
