@@ -14,17 +14,18 @@ const Abstract = ({ title }) => {
   const [abstract, setAbstract] = useState(null)
 
   useEffect(() => {
-    try {
-      fetch(`https://api.duckduckgo.com/?q=${title}&format=json&no_html=1`)
-        .then(d => d.json())
-        .then(data => setAbstract(data.AbstractText))
-    } catch {
-      fetch(
-        `https://api.duckduckgo.com/?q=${title} movie&format=json&no_html=1`
-      )
-        .then(d => d.json())
-        .then(data => setAbstract(data.AbstractText))
-    }
+    fetch(`https://api.duckduckgo.com/?q=${title}&format=json&no_html=1`)
+      .then(d => d.json())
+      .then(data => {
+        if (!data.AbstractText) {
+          fetch(
+            `https://api.duckduckgo.com/?q=${title} movie&format=json&no_html=1`
+          )
+            .then(d => d.json())
+            .then(data => setAbstract(data.AbstractText))
+        }
+        setAbstract(data.AbstractText)
+      })
   }, [])
 
   return abstract ? (
