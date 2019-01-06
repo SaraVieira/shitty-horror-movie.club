@@ -42,7 +42,7 @@ const Circle = ({ votes }) => {
 
   return (
     <CircleContainer className="animated jackInTheBox delay-1s" votes={votes}>
-      <p>{votes * 10} / 10</p>
+      <p>{(votes * 10).toFixed(1)} / 10</p>
       <svg className="progress" width="120" height="120" viewBox="0 0 120 120">
         <circle
           cx="60"
