@@ -10,7 +10,7 @@ body {
     font-family: 'Karma', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
       Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background: #151515;
-    line-height: 1.33;
+    line-height: 1.5;
     color: #fafaff;
     overflow-x: hidden;
 
@@ -44,10 +44,15 @@ body {
   h5,
   h6 {
     padding-bottom: 20px;
+    line-height: 1.125;
   }
 
   small {
     font-size: 0.8rem;
+  }
+
+  p {
+    line-height: 1.5;
   }
 
   .video-container {

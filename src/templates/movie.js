@@ -36,6 +36,7 @@ const Main = styled.main`
   width: 1024px;
   max-width: 90%;
   margin: auto;
+  padding-bottom: 60px;
 `
 
 const Container = styled.div`
