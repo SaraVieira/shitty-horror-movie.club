@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
+import {
+  FaEyeSlash,
+  FaEye,
+  FaCalendarPlus,
+  FaCalendarMinus
+} from 'react-icons/fa'
 import Layout from '../components/layout'
 import Rating from '../components/rating'
 import Img from 'gatsby-image'
@@ -86,7 +92,62 @@ const RandomMovie = styled.div`
   right: 40px;
 `
 
+const Button = styled.button`
+  appearance: none;
+  background: transparent;
+  padding: 0;
+  border: none;
+`
+
 const Movie = ({ data: { tmdbAccountFavoriteMovies: movie } }) => {
+  const [seen, setSeen] = useState([])
+  const [watchList, setWatchList] = useState([])
+
+  const toggleSeenMovie = async movie => {
+    if (seen.find(v => v.id === movie.id)) {
+      const remove = seen.filter(s => s.id !== movie.id)
+      setSeen(remove)
+      await localStorage.setItem(
+        'shitty-horror-movies-seen',
+        JSON.stringify(remove)
+      )
+
+      return
+    }
+    const add = seen.concat(movie)
+    setSeen(add)
+    await localStorage.setItem('shitty-horror-movies-seen', JSON.stringify(add))
+  }
+
+  const toggleWatchListMovie = async movie => {
+    if (watchList.find(v => v.id === movie.id)) {
+      const remove = watchList.filter(s => s.id !== movie.id)
+      setWatchList(remove)
+      await localStorage.setItem(
+        'shitty-horror-movies-watchList',
+        JSON.stringify(remove)
+      )
+
+      return
+    }
+    const add = watchList.concat(movie)
+    setWatchList(add)
+    await localStorage.setItem(
+      'shitty-horror-movies-watchList',
+      JSON.stringify(add)
+    )
+  }
+
+  useEffect(() => {
+    const localStorageSeen =
+      JSON.parse(localStorage.getItem('shitty-horror-movies-seen')) || []
+    const localStorageWatchList =
+      JSON.parse(localStorage.getItem('shitty-horror-movies-watchList')) || []
+
+    setSeen(localStorageSeen)
+    setWatchList(localStorageWatchList)
+  }, [])
+
   return (
     <Layout>
       <RandomMovie>
@@ -109,7 +170,6 @@ const Movie = ({ data: { tmdbAccountFavoriteMovies: movie } }) => {
                     <h1 className="animated fadeInUp">{movie.title}</h1>
                     <h2 className="animated fadeInUp"> {movie.tagline}</h2>
                     <Links className="animated fadeInUp">
-                      {' '}
                       {movie.homepage ? (
                         <a
                           href={`${movie.homepage}/`}
@@ -130,6 +190,33 @@ const Movie = ({ data: { tmdbAccountFavoriteMovies: movie } }) => {
                       >
                         <img src={IMDB} width="24px" alt="IMDB logo" />
                       </a>
+                      <Button
+                        aria-label={`Mark as ${
+                          watchList.find(v => v.id === movie.id)
+                            ? 'Unseen'
+                            : 'seen'
+                        }`}
+                        onClick={() => toggleSeenMovie(movie)}
+                      >
+                        {seen.find(v => v.id === movie.id) ? (
+                          <FaEyeSlash fill="#fafafa" size="24" />
+                        ) : (
+                          <FaEye fill="#fafafa" size="24" />
+                        )}
+                      </Button>
+
+                      <Button
+                        aria-label={`${
+                          seen.find(v => v.id === movie.id) ? 'Remove' : 'Add'
+                        } to Watchlist`}
+                        onClick={() => toggleWatchListMovie(movie)}
+                      >
+                        {watchList.find(v => v.id === movie.id) ? (
+                          <FaCalendarMinus fill="#fafafa" size="24" />
+                        ) : (
+                          <FaCalendarPlus fill="#fafafa" size="24" />
+                        )}
+                      </Button>
                     </Links>
                   </div>
                   <Rating votes={movie.vote_average / 10} />

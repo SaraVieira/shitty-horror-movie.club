@@ -27,6 +27,7 @@
     "react": "^16.7.0-alpha.2",
     "react-dom": "^16.7.0-alpha.2",
     "react-helmet": "^5.2.0",
+    "react-icons": "^3.2.2",
     "tachyons": "^4.11.1",
     "urlify": "^0.3.6",
     "yarn": "^1.12.3"
